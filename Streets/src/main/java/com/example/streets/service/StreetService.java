@@ -1,11 +1,12 @@
 package com.example.streets.service;
 
 import com.example.streets.entity.Street;
+
 import com.example.streets.repository.StreetRepository;
+import com.example.streets.search.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +29,28 @@ public class StreetService {
         return streetRepository.findById(id);
     }
 
-    /*public Page<Street> findByName(String param) {
+    /*public Page<Street> findAll(FilterParameter param) {
         Specification<Street> specification = Specification.where(null);
-        SearchCriteria searchCriteria = new SearchCriteria("keyword", SearchCriteriaOperator.JOIN, param.getKeyword());
-        OrderSpecification filter = new OrderSpecification(searchCriteria);
-        specification = specification.and(filter);
-        return orderRepository.findAll(specification, PageRequest.of(param.getPage() - 1, param.getLimit()));
+        if (param.getKeyword() != null && param.getKeyword().length() > 0) {
+            SearchCriteria searchCriteria
+                    = new SearchCriteria("keyword", SearchCriteriaOperator.JOIN, param.getKeyword());
+            OrderSpecification filter = new OrderSpecification(searchCriteria);
+            specification = specification.and(filter);
+        }
+        if (param.getStatus() != 0) {
+            SearchCriteria searchCriteria
+                    = new SearchCriteria("status", SearchCriteriaOperator.EQUALS, param.getStatus());
+            OrderSpecification filter = new OrderSpecification(searchCriteria);
+            specification = specification.and(filter);
+        }
+        if (param.getDistrictId() != null) {
+            SearchCriteria searchCriteria
+                    = new SearchCriteria("userId", SearchCriteriaOperator.EQUALS, param.getUserId());
+            OrderSpecification filter = new OrderSpecification(searchCriteria);
+            specification = specification.and(filter);
+        }
+        return streetRepository.findAll(
+                specification, PageRequest.of(param.getPage() - 1, param.getLimit()));
     }*/
 
 }
