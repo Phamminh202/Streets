@@ -5,9 +5,6 @@ import com.example.streets.entity.Street;
 import com.example.streets.repository.StreetRepository;
 import com.example.streets.search.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

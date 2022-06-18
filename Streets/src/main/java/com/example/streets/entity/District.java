@@ -24,7 +24,4 @@ public class District {
     private Date createdAt;
     @UpdateTimestamp
     private Date updatedAt;
-
-    @OneToMany(mappedBy = "district")
-    private Set<Street> streets;
 }
